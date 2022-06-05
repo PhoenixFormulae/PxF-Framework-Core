@@ -1,0 +1,21 @@
+## System Imports
+from dataclasses import dataclass, field
+
+
+## Application Imports
+
+
+## Library Imports
+from dataclasses_json import dataclass_json
+
+
+@dataclass_json
+@dataclass(frozen=True, order=True)
+class UserControlData:
+	
+	name: str
+	user_control: str
+	control_type: str = field(default='control')
+	events: dict = field(default_factory=dict)
+	attributes: dict = field(default_factory=dict)
+
