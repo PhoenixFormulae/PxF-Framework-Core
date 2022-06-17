@@ -1,5 +1,5 @@
 ## System Imports
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 ## Application Imports
@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 
 
-@dataclass(frozen=True, order=True)
+@dataclass(frozen=True, slots=True, order=True)
 class WindowConfiguration:
 	
 	width: int
@@ -17,13 +17,19 @@ class WindowConfiguration:
 	x: int
 	height: int
 	screen: int
-	
+
 
 @dataclass_json
-@dataclass(frozen=True, order=True)
+@dataclass(frozen=True, slots=True, order=True)
 class ViewData:
 	
 	name: str
-	controls: dict
+	x: int
+	y: int
+	width: int
+	height: int
+	children: dict
+	events: dict = field(default_factory=dict)
+
 
 

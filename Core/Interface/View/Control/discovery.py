@@ -1,16 +1,15 @@
 ## System Imports
 import sys
 import pkgutil
-import importlib
 from importlib import util
 from typing import List, MutableSequence, Type
 
 
 ## Application Imports
+from Core.Plugins import factory
 from Core.Interface.View.Control.interfaces import ControlInterface
 from Core.Interface.View.Control.exceptions import ControlNotFoundException, ControlInvalidException
 from Core.Interface.View.UserControl.interfaces import UserControlInterface
-from Core.Plugins import factory
 
 
 ## Library Imports
@@ -30,12 +29,15 @@ def get_control(package_path: list[str], type_name: str):
 		if not is_package:
 			continue
 		
-		type_module = importer.find_module(module_name).load_module(module_name)
+		package_spec = importer.find_spec(module_name)
+		package = util.module_from_spec(package_spec)
+		sys.modules[module_name] = package
+		package_spec.loader.exec_module(package)
 		
-		control_names = factory.names_factory(type_module.__package__)
+		control_names = factory.names_factory(package.__package__)
 		
 		for control_name in control_names():
-			control_factory = factory.get_factory(type_module.__package__)
+			control_factory = factory.get_factory(package.__package__)
 			
 			control = control_factory(control_name)
 			# print(f"Control type: {control.Type}")
@@ -49,7 +51,7 @@ def get_control(package_path: list[str], type_name: str):
 	raise ControlNotFoundException(type_name)
 
 
-def get_controls(package_path: MutableSequence[str]) -> List[ControlInterface]:
+def get_controls(package_path: MutableSequence[str]) -> List[Type[ControlInterface]]:
 	"""
 	Searches for all controls in a given package module path
 	that are registered in the factory
@@ -58,7 +60,7 @@ def get_controls(package_path: MutableSequence[str]) -> List[ControlInterface]:
 	:return: The list of control classes
 	"""
 	
-	controls: List[ControlInterface] = []
+	controls: List[Type[ControlInterface]] = []
 	
 	for importer, module_name, is_package in pkgutil.iter_modules(package_path):
 		if not is_package:
@@ -82,32 +84,3 @@ def get_controls(package_path: MutableSequence[str]) -> List[ControlInterface]:
 	
 	return controls
 
-
-def get_user_controls(package_path: str) -> List[Type[UserControlInterface]]:
-	"""
-	Searches for all user controls in a given package module path
-	that are registered in the factory
-
-	:param: package_path: The package module path to search in
-	:return: The list of user control classes
-	"""
-	
-	controls: List[Type[UserControlInterface]] = []
-	
-	for importer, module_name, is_package in pkgutil.iter_modules(package_path):
-		if not is_package:
-			continue
-		
-		type_module = importer.find_module(module_name).load_module(module_name)
-		
-		control_names = factory.names_factory(type_module.__package__)
-		
-		for control_name in control_names():
-			control_factory = factory.get_factory(type_module.__package__)
-			
-			control = control_factory(control_name)
-			
-			if issubclass(control, UserControlInterface):
-				controls.append(control)
-	
-	return controls

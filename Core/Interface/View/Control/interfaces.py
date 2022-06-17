@@ -5,7 +5,7 @@ from typing import Optional, Union, List, TYPE_CHECKING
 
 ## Application Imports
 if TYPE_CHECKING:
-	from Core.Interface.View.Events.interfaces import EventInterface
+	from Core.Interface.View.Event.interfaces import EventInterface
 
 from Core.Interface.View.UserControl.interfaces import UserControlInterface
 from Core.Interface.View.Control.metaclasses import ControlMetaInterfaceMixin
@@ -18,27 +18,52 @@ class ControlInterface(metaclass=ControlMetaInterfaceMixin):
 	
 	@property
 	@abstractmethod
-	def name(self) -> str:
+	def Name(self) -> str:
 		pass
 	
-	@name.setter
+	@Name.setter
 	@abstractmethod
-	def name(self, value: str) -> str:
-		pass
-	
-	@property
-	@abstractmethod
-	def type(self) -> str:
+	def Name(self, value: str) -> str:
 		pass
 	
 	@property
 	@abstractmethod
-	def children(self) -> List[ControlMetaInterfaceMixin]:
+	def Type(self) -> str:
 		pass
 	
 	@property
 	@abstractmethod
-	def user_controls(self) -> List:
+	def Width(self) -> int:
+		pass
+	
+	@property
+	@abstractmethod
+	def Height(self) -> int:
+		pass
+	
+	@property
+	@abstractmethod
+	def GlobalPosition(self) -> tuple[int, int]:
+		pass
+	
+	@property
+	@abstractmethod
+	def RequiredProperties(self) -> list[str]:
+		pass
+	
+	@property
+	@abstractmethod
+	def OptionalProperties(self) -> list[str]:
+		pass
+	
+	@property
+	@abstractmethod
+	def Children(self) -> List[ControlMetaInterfaceMixin]:
+		pass
+	
+	@property
+	@abstractmethod
+	def User_controls(self) -> List:
 		pass
 	
 	@abstractmethod

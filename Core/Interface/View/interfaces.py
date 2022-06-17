@@ -1,25 +1,43 @@
 ## System Imports
-from typing import Optional, List
+from typing import Optional, List, Type
 from abc import ABC, abstractmethod
 
 
 ## Application Imports
-from Core.Interface.View.Events.container import EventContainer
+from Core.Interface.Frame.interfaces import FrameInterface
+from Core.Interface.View.Event.container import EventContainer
+from Core.Interface.Set.interfaces import InterfaceSetInterface
+from Core.Properties.dispatcher import PropertiesEventDispatcher
 from Core.Interface.View.Control.interfaces import ControlInterface
 
 
 ## Library Imports
 
-class ViewInterface(ABC):
+
+class ViewInterface(PropertiesEventDispatcher, ABC):
 	
 	@property
 	@abstractmethod
-	def controls(self) -> List[ControlInterface]:
+	def FrameType(self) -> Type[FrameInterface]:
 		pass
 	
 	@property
 	@abstractmethod
-	def events(self) -> EventContainer:
+	def InterfaceSetType(self) -> Type[InterfaceSetInterface]:
+		pass
+	
+	@property
+	@abstractmethod
+	def Controls(self) -> List[ControlInterface]:
+		pass
+	
+	@property
+	@abstractmethod
+	def Events(self) -> EventContainer:
+		pass
+	
+	@abstractmethod
+	def Ready(self):
 		pass
 	
 	@abstractmethod

@@ -10,7 +10,7 @@ from dataclasses_json import dataclass_json
 
 
 @dataclass_json
-@dataclass(frozen=True, order=True)
+@dataclass(frozen=True, slots=True, order=True)
 class UserControlData:
 	
 	name: str

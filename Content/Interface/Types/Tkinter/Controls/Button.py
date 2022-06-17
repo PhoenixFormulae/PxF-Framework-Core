@@ -3,7 +3,7 @@ import tkinter
 
 
 ## Application Imports
-from Core.Interface.Types.Tkinter.View.Control import Control
+from Content.Interface.Frames.Types.Tkinter.View.Control import Control
 
 
 ## Library Imports

@@ -32,7 +32,7 @@ class IncompleteControlException(Exception):
 		return build_str
 
 
-class IncompleteControlListException(Exception):
+class IncompleteControlPropertiesException(Exception):
 	
 	def __init__(self, control: ControlInterface, missing_properties: list):
 		self.control = control

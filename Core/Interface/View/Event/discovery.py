@@ -1,11 +1,13 @@
 ## System Imports
+import sys
 import pkgutil
+from importlib import util
 from typing import List, MutableSequence
 
 
 ## Application Imports
 from Core.Plugins import factory
-from Core.Interface.View.Events.interfaces import EventInterface
+from Core.Interface.View.Event.interfaces import EventInterface
 
 
 ## Library Imports
@@ -26,12 +28,15 @@ def get_events(package_path: MutableSequence[str]) -> List[EventInterface]:
 		if not is_package:
 			continue
 		
-		type_module = importer.find_module(module_name).load_module(module_name)
+		package_spec = importer.find_spec(module_name)
+		package = util.module_from_spec(package_spec)
+		sys.modules[module_name] = package
+		package_spec.loader.exec_module(package)
 		
-		event_names = factory.names_factory(type_module.__package__)
+		event_names = factory.names_factory(package.__package__)
 		
 		for event_name in event_names():
-			event_factory = factory.get_factory(type_module.__package__)
+			event_factory = factory.get_factory(package.__package__)
 			
 			# TODO: Maybe add type checking to be sure that the class is based of EventInterface
 			# just like in the control discovery get_control method does

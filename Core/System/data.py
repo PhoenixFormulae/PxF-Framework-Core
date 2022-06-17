@@ -9,14 +9,14 @@ from dataclasses import dataclass, field
 from dataclasses_json import dataclass_json
 
 
-@dataclass(frozen=True, order=True)
+@dataclass(frozen=True, slots=True, order=True)
 class GameSystemDetails:
 	
 	logo_path: str
 
 
 @dataclass_json
-@dataclass(frozen=True, order=True)
+@dataclass(frozen=True, slots=True, order=True)
 class GameSystemConfiguration:
 	
 	name: str

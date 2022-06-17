@@ -6,26 +6,15 @@ from typing import Type
 
 
 ## Library Imports
-from Core.Managers.interfaces import ManagerInterface
-from Core.Interface.Set.interfaces import InterfaceSetInterface
+from Core.System.interfaces import GameSystemInterface
 from Core.Interface.Presenter.interfaces import PresenterInterface
 
 
-def register_presenter(interface_set: Type[InterfaceSetInterface]):
+def register_presenter(game_system: Type[GameSystemInterface]):
 
 	def decorator(cls: Type[PresenterInterface]):
 		
-		interface_set.RegisterPresenter(cls)
-		
-		return cls
-	
-	return decorator
-	
-
-def register_manager(manager: Type[ManagerInterface]):
-	
-	def decorator(cls: Type[PresenterInterface]):
-		manager.RegisterPresenter(cls)
+		game_system.RegisterPresenter(cls)
 		
 		return cls
 	

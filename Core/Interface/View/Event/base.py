@@ -4,39 +4,38 @@ from typing import Callable, List, Dict, Any, Optional
 
 ## Application Imports
 from Core.Interface.View.Control.interfaces import ControlInterface
-from Core.Interface.View.Events.interfaces import EventInterface, EventArgumentsInterface
+from Core.Interface.View.Event.interfaces import EventInterface, EventArgumentsInterface
 
 
 # Library Imports
 
 
-class Event(EventInterface):
+class BaseEvent(EventInterface):
 	"""
-	An event is an action that can be registered to occur when
-	other action occurs, for example when the user clicks
-	a button in the mouse the registered methods will be called.
+	An event is an action that can be triggered to occur other action occurs,
+	for example when the user clicks a button in the mouse, the registered methods will be called.
 	"""
 	
 	type: str = "event"
 	
 	@property
-	def name(self) -> str | None:
+	def Name(self) -> str | None:
 		return self.__properties.get('name')
 	
 	@property
-	def children(self) -> List[EventInterface]:
+	def Children(self) -> List[EventInterface]:
 		return self.__children
 	
 	@property
-	def controls(self) -> List[ControlInterface]:
+	def Controls(self) -> List[ControlInterface]:
 		return self.__controls
 	
 	@property
-	def subscribers(self) -> List[Callable]:
+	def Subscribers(self) -> List[Callable]:
 		return self.__subscribers
 	
 	@property
-	def properties(self) -> Dict[str, Any]:
+	def Properties(self) -> Dict[str, Any]:
 		return self.__properties
 	
 	def __init__(self):
@@ -53,8 +52,8 @@ class Event(EventInterface):
 	
 	def AddChildren(self, events: List):
 		for event in events:
-			if event not in self.children:
-				self.children.append(event)
+			if event not in self.__children:
+				self.__children.append(event)
 				event.SetParent(self)
 	
 	def SetParent(self, parent: EventInterface):

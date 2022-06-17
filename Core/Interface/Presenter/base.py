@@ -1,4 +1,5 @@
 ## System Imports
+from abc import ABC
 from typing import Type
 
 
@@ -10,10 +11,9 @@ from Core.Interface.View.interfaces import ViewInterface
 from Core.Interface.Presenter.interfaces import PresenterInterface
 
 
-class BasePresenter(PresenterInterface):
+class BasePresenter(PresenterInterface, ABC):
 	
-	ViewTypes: list[Type[ViewInterface]] = []
-	Views: list[ViewInterface] = []
+	_protocol = None
 	
 	@classmethod
 	def RegisterView(cls, view: Type[ViewInterface]):

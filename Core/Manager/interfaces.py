@@ -8,11 +8,10 @@ from abc import ABC, abstractmethod
 ## Library Imports
 
 
-# TODO: Decide how to acquire the game phase and its related managers
-#       And if the managers should be singletons or not
 class ManagerInterface(ABC):
 	
+	@classmethod
 	@abstractmethod
-	def Ready(self):
+	def Ready(cls):
 		pass
 

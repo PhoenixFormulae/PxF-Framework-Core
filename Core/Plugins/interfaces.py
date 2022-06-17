@@ -10,6 +10,11 @@ from abc import ABC, abstractmethod
 
 class PluginInterface(ABC):
 	
+	@property
+	@abstractmethod
+	def FramesPath(self) -> str:
+		pass
+	
 	@abstractmethod
 	def Initialize(self):
 		pass

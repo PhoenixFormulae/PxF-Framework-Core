@@ -7,7 +7,7 @@ from Core import CoreSystem
 
 
 ## Library Imports
-from Core.Systems.interfaces import GameSystemInterface
+from Core.System.interfaces import GameSystemInterface
 
 
 def register_game_system():

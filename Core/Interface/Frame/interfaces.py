@@ -1,14 +1,18 @@
 ## System Imports
+from typing import TYPE_CHECKING
 from abc import ABC, abstractmethod
 
 
 ## Application Imports
+from Core.Interface.Set.interfaces import InterfaceSetInterface
+from Core.Interface.View.Control.interfaces import ControlInterface
+
+if TYPE_CHECKING:
+	from Core.Interface.View.Control.container import ControlContainer
+	from Core.Interface.View.UserControl.container import UserControlContainer
 
 
 ## Library Imports
-from Core.Interface.Set.interfaces import InterfaceSetInterface
-from Core.Interface.View.Control.container import ControlContainer
-from Core.Interface.View.UserControl.container import UserControlContainer
 
 
 class FrameInterface(ABC):
@@ -20,31 +24,52 @@ class FrameInterface(ABC):
 	
 	@property
 	@abstractmethod
-	def InterfaceSets(self) -> list[InterfaceSetInterface]:
+	def AssetsDirectory(self) -> str:
 		pass
 	
 	@property
 	@abstractmethod
-	def control_types(self) -> ControlContainer:
+	def InterfaceSets(self) -> list[type(InterfaceSetInterface)]:
 		pass
 	
 	@property
 	@abstractmethod
-	def user_control_types(self) -> UserControlContainer:
+	def BaseControlType(self) -> type(ControlInterface):
 		pass
 	
 	@property
 	@abstractmethod
-	def event_types(self):
+	def ControlTypes(self) -> 'ControlContainer':
+		pass
+	
+	@property
+	@abstractmethod
+	def UserControlTypes(self) -> 'UserControlContainer':
+		pass
+	
+	@property
+	@abstractmethod
+	def EventTypes(self):
 		pass
 	
 	@classmethod
 	@abstractmethod
-	def RegisterInterfaceSet(cls, interface_set: InterfaceSetInterface):
+	def RegisterInterfaceSet(cls, interface_set: type(InterfaceSetInterface)):
 		pass
 	
+	@classmethod
 	@abstractmethod
-	def Loop(self):
+	def Initialize(cls):
+		pass
+	
+	@classmethod
+	@abstractmethod
+	def Ready(cls):
+		pass
+	
+	@classmethod
+	@abstractmethod
+	def Loop(cls):
 		pass
 
 

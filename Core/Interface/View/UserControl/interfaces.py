@@ -15,7 +15,22 @@ class UserControlInterface(ABC):
 	
 	@property
 	@abstractmethod
-	def type(self) -> str:
+	def Type(self) -> str:
+		pass
+	
+	@property
+	@abstractmethod
+	def UserControlProperties(self) -> dict:
+		pass
+	
+	@property
+	@abstractmethod
+	def ControlProperties(self) -> dict:
+		pass
+	
+	@property
+	@abstractmethod
+	def EventProperties(self) -> dict:
 		pass
 	
 	@abstractmethod

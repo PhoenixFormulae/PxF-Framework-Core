@@ -1,19 +1,19 @@
 ## System Imports
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 from typing import Type, TYPE_CHECKING
 
 
 ## Application Imports
+if TYPE_CHECKING:
+	from Core.Interface.Frame.interfaces import FrameInterface
+	from Core.Interface.Presenter.interfaces import PresenterInterface
+	from Core.Interface.View.UserControl.container import UserControlContainer
 
 
 ## Library Imports
-if TYPE_CHECKING:
-	from Core.Interface.Frame.interfaces import FrameInterface
-
-from Core.Interface.Presenter.interfaces import PresenterInterface
 
 
-class InterfaceSetInterface:
+class InterfaceSetInterface(ABC):
 	
 	@property
 	@abstractmethod
@@ -22,12 +22,7 @@ class InterfaceSetInterface:
 	
 	@property
 	@abstractmethod
-	def Frame(self) -> 'FrameInterface':
-		pass
-	
-	@property
-	@abstractmethod
-	def PresenterTypes(self) -> list[Type[PresenterInterface]]:
+	def FrameType(self) -> Type['FrameInterface']:
 		pass
 	
 	@property
@@ -35,11 +30,19 @@ class InterfaceSetInterface:
 	def AssetsDirectory(self) -> str:
 		pass
 	
-	@classmethod
+	@property
 	@abstractmethod
-	def RegisterPresenter(cls, presenter: Type[PresenterInterface]):
+	def UserControlTypes(self) -> 'UserControlContainer':
 		pass
 	
-	def Ready(self):
+	@classmethod
+	@abstractmethod
+	def Initialize(cls):
 		pass
+	
+	@classmethod
+	@abstractmethod
+	def Ready(cls):
+		pass
+	
 	

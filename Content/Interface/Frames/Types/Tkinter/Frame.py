@@ -7,7 +7,7 @@ from Core.Interface.Frame import FrameBase
 from Core.Interface.View.Control import discovery
 from Core.Interface.data import BaseWindowConfiguration
 from Core.Interface.View.interfaces import ViewInterface
-from Core.Interface.Types.Tkinter.Window import TkinterWindow
+from Content.Interface.Frames.Types.Tkinter.Window import TkinterWindow
 from Core.Interface.Frame.interfaces import FrameWindowInterface
 from Core.Interface.View.Control.interfaces import ControlInterface
 from Core.Interface.View.UserControl.interfaces import UserControlInterface

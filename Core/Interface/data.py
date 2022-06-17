@@ -8,11 +8,11 @@ from dataclasses import dataclass
 ## Library Imports
 
 
-@dataclass(frozen=True, order=True)
+@dataclass(slots=True, init=True, order=True)
 class BaseWindowConfiguration:
 
 	title: str = 'Phoenix Formulae'
-	width: int = 800
-	height: int = 600
+	width: int = 1024
+	height: int = 800
 	windowed: bool = True
 

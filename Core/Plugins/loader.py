@@ -9,7 +9,7 @@ from inspect import signature
 
 ## Application Imports
 from Core.Plugins.interfaces import PluginInterface
-from Core.Systems.interfaces import GameSystemInterface
+from Core.System.interfaces import GameSystemInterface
 
 
 ## Library Imports
@@ -24,10 +24,10 @@ PACKAGE_LOOKUP_NAMESPACES = [
 PLUGINS: List[PluginInterface] = []
 
 
-def load_all_packages(system: GameSystemInterface):
+def load_all_packages():
 	for importer, module_name, is_package in pkgutil.iter_modules(Plugins.__path__):
 		if is_package:
-			load_raw_package(system, importer, module_name)
+			load_raw_package(importer, module_name)
 		else:
 			pass
 			"""
@@ -40,8 +40,7 @@ def load_all_packages(system: GameSystemInterface):
 			"""
 
 
-def load_raw_package(system: GameSystemInterface, importer, package_name: str):
-	# package_module = importer.find_module(package_name).load_module(package_name)
+def load_raw_package(importer, package_name: str):
 	
 	package_spec = importer.find_spec(package_name)
 	package = util.module_from_spec(package_spec)

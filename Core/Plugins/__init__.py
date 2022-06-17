@@ -7,12 +7,12 @@ import logging
 
 ## Library Imports
 from Core.Plugins import loader
-from Core.Systems.interfaces import GameSystemInterface
+from Core.System.interfaces import GameSystemInterface
 
 
-def Initialize(system: GameSystemInterface):
+def Initialize():
 	logging.info("Loading plugin packages")
-	loader.load_all_packages(system)
+	loader.load_all_packages()
 	
 
 

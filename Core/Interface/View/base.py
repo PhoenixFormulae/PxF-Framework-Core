@@ -5,38 +5,56 @@ from typing import Optional, List
 
 
 ## Application Imports
-from System.Interface.View.ViewLoader import ViewLoader
+from Core.Interface.View.loader import ViewLoader
+from Core.Interface.View.interfaces import ViewInterface
+from Core.Interface.View.Event.container import EventContainer
+from Core.Interface.View.Event.interfaces import EventInterface
+from Core.Properties.dispatcher import PropertiesEventDispatcher
+from Core.Interface.View.Control.interfaces import ControlInterface
 
 
 ## Library Imports
-from Core.Interface.View.interfaces import ViewInterface
-from Core.Interface.View.Events.container import EventContainer
-from Core.Interface.View.Control.interfaces import ControlInterface
 
 
 class BaseView(ViewInterface, ABC):
 	
 	@property
-	def controls(self) -> List[ControlInterface]:
+	def Controls(self) -> List[ControlInterface]:
 		return self.__controls
 	
 	@property
-	def events(self) -> EventContainer:
+	def Events(self) -> EventContainer:
 		return self.__event_container
 	
-	def __init__(self, name: str):
-		self.__controls: List[ControlInterface] = []
-		self.__event_container = EventContainer()
+	def __init__(self):
+		super().__init__()
 		
-		self.__path = Path(name)
+		self.__controls: List[ControlInterface] = []
+		self.__events: List[EventInterface] = []
+		
+		self.__event_container = None  # EventContainer()
+		
+		self.__path: str | None = None
 		self.__loaded: bool = False
 		
-		ViewLoader().Load(self, self.__path.__str__())
-		
-		self._Prepare()
+		self.__view_loader = ViewLoader(self, self.FrameType, self.InterfaceSetType)
+	
+	def Ready(self):
+		pass
 	
 	def _Prepare(self):
 		pass
+	
+	def _Load(self, path: str):
+		if self.__loaded:
+			raise Exception('View was already loaded, cannot load again')
+		
+		self.__path = Path(path)
+		
+		self.__view_loader.Load(self.__path.__str__())
+		self.__loaded = True
+		
+		self.Hide()
 	
 	def Show(self):
 		# TODO: Showing root level controls should be enough to show the view as it would not be necessary to
@@ -56,7 +74,7 @@ class BaseView(ViewInterface, ABC):
 		for control in self.__controls:
 			control: ControlInterface = control
 			
-			if control.name == control_name:
+			if control.Name == control_name:
 				return control
 			
 			if recursive:

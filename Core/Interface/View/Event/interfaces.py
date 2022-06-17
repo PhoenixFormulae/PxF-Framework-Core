@@ -5,7 +5,7 @@ from typing import Callable, List, Dict
 
 ## Application Imports
 from Core.Interface.View.Control.interfaces import ControlInterface
-from Core.Interface.View.Events.metaclasses import EventMetaInterfaceMixin
+from Core.Interface.View.Event.metaclasses import EventMetaInterfaceMixin
 
 
 ## Library Imports
@@ -26,27 +26,27 @@ class EventInterface(metaclass=EventMetaInterfaceMixin):
 	
 	@property
 	@abstractmethod
-	def type(self) -> str:
+	def Type(self) -> str:
 		pass
 	
 	@property
 	@abstractmethod
-	def name(self) -> str:
+	def Name(self) -> str:
 		pass
 	
 	@property
 	@abstractmethod
-	def children(self) -> List:
+	def Children(self) -> List:
 		pass
 	
 	@property
 	@abstractmethod
-	def subscribers(self) -> List[Callable]:
+	def Subscribers(self) -> List[Callable]:
 		pass
 	
 	@property
 	@abstractmethod
-	def properties(self) -> Dict[str, object]:
+	def Properties(self) -> Dict[str, object]:
 		pass
 	
 	@abstractmethod
@@ -58,7 +58,7 @@ class EventInterface(metaclass=EventMetaInterfaceMixin):
 		pass
 	
 	@abstractmethod
-	def AddSubscriber(self, subscriber: Callable, recursive: bool):
+	def AddSubscriber(self, subscriber: Callable, recursive: bool = False):
 		pass
 	
 	@abstractmethod

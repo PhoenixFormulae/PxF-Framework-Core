@@ -1,25 +1,25 @@
 ## System Imports
+from typing import List
 from abc import ABC, abstractmethod
-from typing import Type
 
 
 ## Application Imports
+from Core.Interface.View.interfaces import ViewInterface
 
 
 ## Library Imports
-from Core.Interface.View.interfaces import ViewInterface
 
 
 class PresenterInterface(ABC):
 	
 	@property
 	@abstractmethod
-	def ViewTypes(self) -> list[Type[ViewInterface]]:
+	def ViewTypes(self) -> List[type(ViewInterface)]:
 		pass
 	
 	@property
 	@abstractmethod
-	def Views(self) -> list[ViewInterface]:
+	def Views(self) -> List[ViewInterface]:
 		pass
 	
 	@classmethod
