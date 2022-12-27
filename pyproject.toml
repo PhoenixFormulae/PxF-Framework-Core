@@ -6,13 +6,16 @@ authors = ["NewWars <miguasjpsilva@gmail.com>"]
 readme = "README.md"
 packages = [{include = "core"}]
 
+
 [tool.poetry.dependencies]
 python = "^3.10"
-
-pre-commit = "*"
 dataclasses-json = "*"
 events = "*"
 memory-profiler = "*"
+
+
+[tool.poetry.dev-dependencies]
+pre-commit = "*"
 
 
 [build-system]

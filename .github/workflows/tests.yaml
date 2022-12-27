@@ -19,5 +19,5 @@ jobs:
           python -m pip install poetry
 
       - name: Run Unit Tests
-        run: python -m unittests discord -s ./tests/
+      - run: python -m unittests discord -s ./tests/
 
