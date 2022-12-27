@@ -1,16 +1,16 @@
-## System Imports
+## framework imports
 from typing import List, Union, Optional
 from tkinter import ttk
 
 
-## Application Imports
-from Core.Interface.View.Event.interfaces import EventInterface
-from Core.Interface.View.Control.interfaces import ControlInterface
-from Core.Interface.View.UserControl.interfaces import UserControlInterface
-from Core.Interface.View.Control.metaclasses import ControlMetaInterfaceMixin
+## Application imports
+from core.framework import EventInterface
+from core.framework import ControlInterface
+from core.framework import UserControlInterface
+from core.framework import ControlMetaInterfaceMixin
 
 
-## Library Imports
+## Library imports
 
 
 class Control(ControlInterface, ttk.Widget):

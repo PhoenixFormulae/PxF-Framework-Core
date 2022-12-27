@@ -1,23 +1,21 @@
-## System Imports
+## framework imports
 from typing import List, Type
 
+## Application imports
+from core.framework import BaseFrame
+from core.framework import discovery
+from core.framework import BaseWindowConfiguration
+from core.framework import ViewInterface
+from core.framework import FrameWindowInterface
+from core.framework import ControlInterface
+from core.framework import UserControlInterface
 
-## Application Imports
-from Core.Interface.Frame import FrameBase
-from Core.Interface.View.Control import discovery
-from Core.Interface.data import BaseWindowConfiguration
-from Core.Interface.View.interfaces import ViewInterface
-from Content.Interface.Frames.Types.Tkinter.Window import TkinterWindow
-from Core.Interface.Frame.interfaces import FrameWindowInterface
-from Core.Interface.View.Control.interfaces import ControlInterface
-from Core.Interface.View.UserControl.interfaces import UserControlInterface
-
-
-## Library Imports
+## Library imports
 from Content.Interface.Types.Tkinter import Controls
+from Content.Interface.Frames.Types.Tkinter.Window import TkinterWindow
 
 
-class TkinterFrame(FrameBase):
+class TkinterFrame(BaseFrame):
 	
 	Type: str = "Tkinter"
 	SingleWindow: bool = False

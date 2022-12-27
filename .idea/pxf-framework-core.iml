@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../Content/GameSystems" />
+    <content url="file://$MODULE_DIR$/../../Content/Plugins" />
+    <content url="file://$MODULE_DIR$/../../Content/Stubs">
+      <sourceFolder url="file://$MODULE_DIR$/../../Content/Stubs" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../../../../PhoenixFormulae-Community/PxF Client/Content/Plugins" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

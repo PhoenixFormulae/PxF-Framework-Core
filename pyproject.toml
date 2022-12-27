@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pxf-framework-core"
+version = "0.1.0"
+description = ""
+authors = ["NewWars <miguasjpsilva@gmail.com>"]
+readme = "README.md"
+packages = [{include = "core"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+pre-commit = "*"
+dataclasses-json = "*"
+events = "*"
+memory-profiler = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

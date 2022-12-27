@@ -1,12 +1,12 @@
-## System Imports
+## framework imports
 import tkinter
 
 
-## Application Imports
+## Application imports
 from Content.Interface.Frames.Types.Tkinter.View.Control import Control
 
 
-## Library Imports
+## Library imports
 
 
 class Button(Control, tkinter.Button):

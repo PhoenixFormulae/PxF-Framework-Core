@@ -1,13 +1,13 @@
-## System Imports
+## framework imports
 import tkinter
 from typing import Optional
 
 
-## Application Imports
-from Core.Interface.Window import BaseWindow
+## Application imports
+from core.framework import BaseWindow
 
 
-## Library Imports
+## Library imports
 
 
 class TkinterWindow(BaseWindow):
