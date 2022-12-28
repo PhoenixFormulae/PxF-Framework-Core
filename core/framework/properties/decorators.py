@@ -1,13 +1,11 @@
-## framework imports
-from typing import Tuple
+# Standard imports
+import typing
 
 
-## Application imports
-from metin2 import List
+# Local imports
+
+# External imports
 
 
-## Library imports
-
-
-def observable_property(types: str | List[Tuple], editable: bool = False, required: bool = True):
-	pass
+def observable_property(types: str | typing.List[typing.Tuple], editable: bool = False, required: bool = True): # noqa
+    pass

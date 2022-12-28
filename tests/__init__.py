@@ -3,9 +3,10 @@ import unittest
 
 # Library imports
 from tests import test_core
-from tests import settings
+from tests import locale
 from tests import expressions
 from tests import parsers
+from tests import manager
 
 # External imports
 

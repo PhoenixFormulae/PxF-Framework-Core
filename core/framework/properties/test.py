@@ -1,29 +1,28 @@
-## framework imports
+# Standard Imports
+
+# Local Imports
+from core.framework.properties.dispatcher import PropertiesEventDispatcher
+from core.framework.properties.property import StringProperty
 
 
-## Application imports
-from core.framework import StringProperty
-from core.framework import PropertiesEventDispatcher
-
-
-## Library imports
+# External Imports
 
 
 class TestClass(PropertiesEventDispatcher):
-	Hello = StringProperty('There')
-	
-	def on_Hello(self, *args, **kwargs):
-		pass
+    Hello = StringProperty('There')
+
+    def on_Hello(self, *args, **kwargs):
+        pass
 
 
 if __name__ == '__main__':
-	test_class = TestClass()
-	
-	hello = test_class.Hello
-	
-	test_class.Hello = 'Again'
-	
-	rep = test_class.Hello.__repr__()
-	rp = hello.__repr__()
-	
-	pass
+    test_class = TestClass()
+
+    hello = test_class.Hello
+
+    test_class.Hello = 'Again'
+
+    rep = test_class.Hello.__repr__()
+    rp = hello.__repr__()
+
+    pass

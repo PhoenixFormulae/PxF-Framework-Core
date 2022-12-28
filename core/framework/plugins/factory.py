@@ -1,73 +1,74 @@
-## framework imports
+# Standard Imports
 import functools
 import importlib
 from collections import namedtuple
 from importlib import resources
+import typing
 
 
-## Application imports
+# Local Imports
 
 
-## Library imports
+# External Imports
 
 
 Plugin = namedtuple("Plugin", ("name", "func"))
-_PLUGINS = {}
+_PLUGINS: typing.Dict[object, object] = {}
 
 
 def register(func):
-	"""Decorator for registering a new plugin"""
-	package, _, plugin = func.__module__.rpartition(".")
-	pkg_info = _PLUGINS.setdefault(package, {})
-	pkg_info[plugin] = Plugin(name=plugin, func=func)
-	return func
+    """Decorator for registering a new plugin"""
+    package, _, plugin = func.__module__.rpartition(".")
+    pkg_info = _PLUGINS.setdefault(package, {})
+    pkg_info[plugin] = Plugin(name=plugin, func=func)
+    return func
 
 
 def names(package):
-	"""List all plugins in one package"""
-	_import_all(package)
-	
-	if package in _PLUGINS:
-		return sorted(_PLUGINS[package])
-	
-	return []
+    """List all plugins in one package"""
+    _import_all(package)
+
+    if package in _PLUGINS:
+        return sorted(_PLUGINS[package])
+
+    return []
 
 
 def get(package, plugin):
-	"""Get a given plugin"""
-	_import(package, plugin)
-	return _PLUGINS[package][plugin].func
+    """Get a given plugin"""
+    _import(package, plugin)
+    return _PLUGINS[package][plugin].func
 
 
 def call(package, plugin, *args, **kwargs):
-	"""Call the given plugin"""
-	plugin_func = get(package, plugin)
-	return plugin_func(*args, **kwargs)
+    """Call the given plugin"""
+    plugin_func = get(package, plugin)
+    return plugin_func(*args, **kwargs)
 
 
 def _import(package, plugin):
-	"""Import the given plugin file from a package"""
-	importlib.import_module(f"{package}.{plugin}")
+    """Import the given plugin file from a package"""
+    importlib.import_module(f"{package}.{plugin}")
 
 
 def _import_all(package):
-	"""Import all plugins in a package"""
-	files = resources.contents(package)
-	plugins = [f[:-3] for f in files if f.endswith(".py") and f[0] != "_"]
-	for plugin in plugins:
-		_import(package, plugin)
+    """Import all plugins in a package"""
+    files = resources.contents(package)
+    plugins = [f[:-3] for f in files if f.endswith(".py") and f[0] != "_"]
+    for plugin in plugins:
+        _import(package, plugin)
 
 
 def names_factory(package):
-	"""Create a names() function for one package"""
-	return functools.partial(names, package)
+    """Create a names() function for one package"""
+    return functools.partial(names, package)
 
 
 def get_factory(package):
-	"""Create a get() function for one package"""
-	return functools.partial(get, package)
+    """Create a get() function for one package"""
+    return functools.partial(get, package)
 
 
 def call_factory(package):
-	"""Create a call() function for one package"""
-	return functools.partial(call, package)
+    """Create a call() function for one package"""
+    return functools.partial(call, package)

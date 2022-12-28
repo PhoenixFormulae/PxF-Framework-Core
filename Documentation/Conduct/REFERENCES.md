@@ -9,11 +9,11 @@ and faster
 #### Styling
 When importing modules or objects, the structure follows:
 ```python
-## framework imports
+# Standard Imports
 
 # Embedder imports
 
-## Library imports
+# External Imports
 
 ## External imports
 ```

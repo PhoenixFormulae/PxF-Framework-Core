@@ -1,35 +1,33 @@
-## framework imports
+# Standard Imports
 from abc import ABC
 
-
-## Application imports
-from core.framework import GameSystemInterface
-
-
-## Library imports
+# Local Imports
+from core.framework.system.interfaces import GameSystemABC
 
 
-class BaseGameSystem(GameSystemInterface, ABC):
-	
-	def Ready(self):
-		for manager in self.ManagerTypes:
-			manager.ready()
-		
-		self.ReadyPresenters()
-		self.InitializeInterface()
-	
-	def PostReady(self):
-		for manager in self.ManagerTypes:
-			if hasattr(manager, 'PostReady'):
-				manager.PostReady()
-		
-		self.InitializeInterface()
-	
-	def ReadyPresenters(self):
-		for presenter in self.PresenterTypes:
-			presenter.ready()
-		
-	def InitializeInterface(self):
-		for frame in self.Frames:
-			frame.ready()
+# External Imports
 
+
+class BaseGameSystem(GameSystemABC, ABC):
+
+    def ready(self):
+        for manager in self.manager_types:
+            manager.ready()
+
+        self.ready_presenters()
+        self.init_interface()
+
+    def post_ready(self):
+        for manager in self.manager_types:
+            if hasattr(manager, 'PostReady'):
+                manager.PostReady()
+
+        self.init_interface()
+
+    def ready_presenters(self):
+        for presenter in self.presenter_types:
+            presenter.ready()
+
+    def init_interface(self):
+        for frame in self.frames:
+            frame.ready()

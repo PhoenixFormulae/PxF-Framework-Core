@@ -17,7 +17,7 @@ class SimpleExpressionTestCase(unittest.TestCase):
 
         result = simple.resolve_expression(some_class, '_:Prop:')
 
-        self.assertEqual(result, "World")
+        self.assertEqual(result, "Prop")
 
 
 if __name__ == '__main__':

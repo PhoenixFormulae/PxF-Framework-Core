@@ -1,4 +1,4 @@
-# COntributing
+# Contributing
 
 ## Pull Requests
 
@@ -10,6 +10,6 @@ the issue instead
 ## Permissions
 
 ### Third Party Properties
-It is not allowed to propose code or assets that are owned by third parties, with the exception of cases where such
+It is not allowed to propose code or assets that are owned by third parties, except cases where such
 belongs to a license that allows to do so
 

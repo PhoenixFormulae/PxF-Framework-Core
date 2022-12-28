@@ -1,24 +1,24 @@
-## framework imports
+# Standard Imports
 from abc import ABC, abstractmethod
 
 
-## Application imports
+# Local Imports
 
 
-## Library imports
+# External Imports
 
 
-class PluginInterface(ABC):
-	
-	@property
-	@abstractmethod
-	def FramesPath(self) -> str:
-		pass
-	
-	@abstractmethod
-	def Initialize(self):
-		pass
-	
-	@abstractmethod
-	def Ready(self):
-		pass
+class PluginABC(ABC):
+
+    @property
+    @abstractmethod
+    def frames_path(self) -> str:
+        pass
+
+    @abstractmethod
+    def init(self):
+        pass
+
+    @abstractmethod
+    def ready(self):
+        pass

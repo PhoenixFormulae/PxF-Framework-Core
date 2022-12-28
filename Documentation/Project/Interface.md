@@ -24,7 +24,7 @@ which have `Controls`
 
 Keep in mind that the `Frames` which are the application
 windows that hold the `Views` objects do not come into
-consideration in this pattern because they are asbtract
+consideration in this pattern because they are abstract
 from this scenario
 
 

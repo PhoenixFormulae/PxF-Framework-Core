@@ -1,20 +1,18 @@
-## framework imports
+# System imports
 from typing import Type
 
-
-## Application imports
+# Local imports
 from core.framework import CoreSystem
+from core.framework.system.interfaces import GameSystemABC
 
 
-## Library imports
-from core.framework import GameSystemInterface
+# External imports
 
 
 def register_game_system():
-	
-	def decorator(game_system: Type[GameSystemInterface]):
-		CoreSystem.register_game_system(game_system)
-		
-		return game_system
-	
-	return decorator
+    def decorator(game_system: Type[GameSystemABC]):
+        CoreSystem.register_game_system(game_system)
+
+        return game_system
+
+    return decorator

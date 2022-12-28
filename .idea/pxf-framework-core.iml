@@ -6,9 +6,12 @@
     <content url="file://$MODULE_DIR$/../../Content/Stubs">
       <sourceFolder url="file://$MODULE_DIR$/../../Content/Stubs" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.mypy_cache" />
+      <excludeFolder url="file://$MODULE_DIR$/Documentation" />
+    </content>
     <content url="file://$MODULE_DIR$/../../../../PhoenixFormulae-Community/PxF Client/Content/Plugins" />
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Poetry (pxf-framework-core)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

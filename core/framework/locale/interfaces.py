@@ -1,27 +1,25 @@
-## framework imports
+# System imports
 from abc import ABC, abstractmethod
 
 
-## Application imports
+# Local imports
+
+# External imports
 
 
-## Library imports
+class LocaleContextABC(ABC):
+
+    @abstractmethod
+    def string(self, key: str):
+        pass
+
+    @abstractmethod
+    def int(self, key: str):
+        pass
 
 
-class LocaleContextInterface(ABC):
-	
-	@abstractmethod
-	def String(self, key: str):
-		pass
-	
-	@abstractmethod
-	def Int(self, key: str):
-		pass
+class LocaleABC(ABC):
 
-
-class LocaleInterface(ABC):
-	
-	@abstractmethod
-	def GetContext(self, key: str) -> LocaleContextInterface:
-		pass
-
+    @abstractmethod
+    def get_context(self, key: str) -> LocaleContextABC:
+        pass

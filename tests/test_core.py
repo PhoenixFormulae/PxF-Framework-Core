@@ -4,13 +4,14 @@ import unittest
 # Library imports
 
 # External imports
+from core import framework
 
 
 class CoreExecutionTestCase(unittest.TestCase):
 
-    def test_run_core(self):
-
-        self.fail()
+    @staticmethod
+    def test_run_core():
+        framework.init()
 
 
 if __name__ == '__main__':

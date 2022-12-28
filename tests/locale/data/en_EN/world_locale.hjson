@@ -1,0 +1,8 @@
+{
+    language: en_EN
+
+    values: {
+        FOO: Foo
+        BAR: Bar
+    }
+}
