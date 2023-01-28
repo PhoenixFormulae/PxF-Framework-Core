@@ -1,7 +1,7 @@
 # Standard imports
 import unittest
 
-# Library imports
+# Local Imports
 from tests import test_core
 from tests import locale
 from tests import expressions

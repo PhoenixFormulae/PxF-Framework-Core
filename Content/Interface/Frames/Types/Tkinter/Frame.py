@@ -1,19 +1,19 @@
 # Standard Imports
 from typing import List, Type
 
-from Content.Interface.Frames.Types.Tkinter.Window import TkinterWindow
 # Local Imports
 from Content.Interface.Types.Tkinter import Controls
-from core.framework.interface.data import BaseWindowConfiguration
+from Content.Interface.Frames.Types.Tkinter.Window import TkinterWindow
 
 # External Imports
-from core.framework.interface.frame.base import BaseFrame
-from core.framework.interface.frame.interfaces import FrameWindowInterface
-from core.framework.interface.set.interfaces import InterfaceSetABC
-from core.framework.interface.view.user_control.interfaces import UserControlABC
-from core.framework.interface.view.control import discovery
-from core.framework.interface.view.control.interfaces import ControlABC
-from core.framework.interface.view.interfaces import ViewABC
+from pxf_framework_core.framework.interface.frame.base import BaseFrame
+from pxf_framework_core.framework.interface.frame.window.abc import FrameWindowABC
+from pxf_framework_core.framework.interface.frame.window.data import FrameWindowConfig
+from pxf_framework_core.framework.interface.set.interfaces import InterfaceSetABC
+from pxf_framework_core.framework.interface.view.user_control.interfaces import UserControlABC
+from pxf_framework_core.framework.interface.view.control import discovery
+from pxf_framework_core.framework.interface.view.control.interfaces import ControlABC
+from pxf_framework_core.framework.interface.view.interfaces import ViewABC
 
 
 class TkinterFrame(BaseFrame):
@@ -41,7 +41,7 @@ class TkinterFrame(BaseFrame):
         return self.__views
 
     @property
-    def windows(self) -> List[FrameWindowInterface]:
+    def windows(self) -> List[FrameWindowABC]:
         return self.__windows
 
     @property
@@ -53,20 +53,20 @@ class TkinterFrame(BaseFrame):
         return self.__user_controls
 
     @property
-    def window_type(self) -> type(FrameWindowInterface):
+    def window_type(self) -> type(FrameWindowABC):
         return self.__window_type
 
     def __init__(self):
         super().__init__()
 
         self.__views: List[ViewABC] = []
-        self.__window_configuration = BaseWindowConfiguration()
+        self.__window_configuration = FrameWindowConfig()
         self.__windows: List[TkinterWindow] = []
 
         self.__controls: List[ControlABC] = []
         self.__user_controls: List[UserControlABC] = []
 
-        self.__window_type: Type[FrameWindowInterface] = TkinterWindow
+        self.__window_type: Type[FrameWindowABC] = TkinterWindow
 
     def init(self):
         self.__controls = discovery.get_controls(Controls.__path__)
@@ -74,4 +74,4 @@ class TkinterFrame(BaseFrame):
 
     def loop(self):
         if len(self.__windows) > 0:
-            self.__windows[0].Loop()
+            self.__windows[0].loop()

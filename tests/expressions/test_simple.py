@@ -2,9 +2,9 @@
 import unittest
 
 # Local Imports
-from core.framework.expressions import simple
 
 # External Imports
+from pxf_framework_core.framework.expressions import simple
 
 
 class SimpleExpressionTestCase(unittest.TestCase):

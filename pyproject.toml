@@ -4,7 +4,10 @@ version = "0.1.0"
 description = ""
 authors = ["NewWars"]
 readme = "README.md"
-packages = [{include = "core"}]
+packages = [
+    {include = "pxf_framework_core"},
+    {include = "pxf_framework_core/py.typed"}
+]
 
 
 [tool.poetry.dependencies]

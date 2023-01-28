@@ -1,10 +1,10 @@
 # Standard imports
 import unittest
 
-# Library imports
+# Local Imports
+from pxf_framework_core.framework.parsers.interface.view.formats import json
 
 # External imports
-from core.framework.parsers.interface.view.formats import json
 
 
 view_input_json = """

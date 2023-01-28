@@ -25,7 +25,7 @@
 [socials:youtube]: https://www.youtube.com/channel/UCzccE_nQ1oq15BDlI9bpNlA
 [socials:discord]: https://discord.gg/2anGcUMtfV
 <!-- [socials:gmail]: phoenixformulae@gmail.com -->
-[socials:gmailmailto]: mailto:phoenixformulae@gmail.com
+[socials:gmail_mailto]: mailto:phoenixformulae@gmail.com
 <!-- SOCIALS -->
 
 

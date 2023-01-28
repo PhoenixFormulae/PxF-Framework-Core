@@ -2,15 +2,15 @@
 import unittest
 from typing import Type
 
-from core.framework.interface.frame.interfaces import FrameABC
-from core.framework.interface.presenter.interfaces import PresenterABC
-# Library imports
+# Local Imports
+from pxf_framework_core.framework.interface.frame.interfaces import FrameABC
+from pxf_framework_core.framework.interface.presenter.interfaces import PresenterABC
+from pxf_framework_core.framework.manager.interfaces import ManagerABC
+from pxf_framework_core.framework.manager.decorators import register_manager
+from pxf_framework_core.framework.system.data import GameSystemConfiguration
+from pxf_framework_core.framework.system.interfaces import GameSystemABC
 
 # External imports
-from core.framework.manager.interfaces import ManagerABC
-from core.framework.manager.decorators import register_manager
-from core.framework.system.data import GameSystemConfiguration
-from core.framework.system.interfaces import GameSystemABC
 
 
 class ManagerTestCase(unittest.TestCase):

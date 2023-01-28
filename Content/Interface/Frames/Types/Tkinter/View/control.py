@@ -1,13 +1,12 @@
 # Standard Imports
-from typing import List
+from typing import List, Self
 from tkinter import ttk
 
 # Local Imports
-from core.framework.interface.view.control.interfaces import ControlABC
-from core.framework.interface.view.control.metaclasses import ControlMetaABCMixin
-from core.framework.interface.view.user_control.interfaces import UserControlABC
-from core.framework.interface.view.event.interfaces import EventABC
-
+from pxf_framework_core.framework.interface.view.control.interfaces import ControlABC
+from pxf_framework_core.framework.interface.view.control.metaclasses import ControlMetaABCMixin
+from pxf_framework_core.framework.interface.view.user_control.interfaces import UserControlABC
+from pxf_framework_core.framework.interface.view.event.interfaces import EventABC
 
 # External Imports
 
@@ -47,6 +46,10 @@ class Control(ControlABC, ttk.Widget):
     @property
     def optional_properties(self) -> list[str]:
         raise NotImplementedError
+
+    @property
+    def parent_cls(self) -> Self:
+        return Self.parent_cls
 
     def __init__(self):
         super().__init__()

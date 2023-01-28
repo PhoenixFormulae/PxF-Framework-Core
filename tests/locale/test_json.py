@@ -1,11 +1,10 @@
 # Standard imports
 import unittest
 
-from core.framework import locale
-
-# Library imports
+# Local Imports
 
 # External imports
+from pxf_framework_core.framework import locale
 
 
 locale_input_json = """
@@ -25,7 +24,7 @@ locale_input_json = """
 class LocaleTestCase(unittest.TestCase):
 
     def setUp(self) -> None:
-        from core.framework import locale
+        from pxf_framework_core.framework import locale
         locale.init()
         locale.install()
 

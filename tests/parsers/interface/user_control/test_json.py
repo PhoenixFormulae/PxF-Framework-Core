@@ -1,10 +1,10 @@
 # Standard imports
 import unittest
 
-# Library imports
+# Local Imports
 
 # External imports
-from core.framework.parsers.interface.user_control.formats import json
+from pxf_framework_core.framework.parsers.interface.user_control.formats import json
 
 
 user_control_input_json = """

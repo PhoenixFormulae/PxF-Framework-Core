@@ -1,10 +1,10 @@
 # Standard imports
 import unittest
 
-# Library imports
+# Local imports
 
 # External imports
-from core import framework
+from pxf_framework_core import framework
 
 
 class CoreExecutionTestCase(unittest.TestCase):
